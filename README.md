@@ -98,14 +98,6 @@ Quantities are per board. All parts are through‑hole.
 | J4              | 1   | 2‑pin header        | 2.54 mm PinHeader 1×02                           | Power in: pin 1 = +5 V, pin 2 = GND |
 | PCB             | 1   | —                   | See §4                                           | — |
 
-**Q1 selection.** The symbol/footprint pin order on the board is **C–B–E**
-(collector, base, emitter) reading across the TO‑92 pads. Common jelly‑bean NPNs
-(2N3904, PN2222A, 2N4401) are pinned **E–B–C** in TO‑92. **Verify your chosen
-transistor's datasheet pinout and orient/reverse it so C, B, E land on the
-correct pads** — inserting an E–B–C part "as printed" will reverse it. Pick a
-device rated for at least the ~200 mA array current with margin (2N4401 / 2N2222A
-are good choices).
-
 **Emitter/detector wavelength.** OP140 (emitter) and OP550 (detector) are the
 parts called out in the design. Confirm the detector's spectral response overlaps
 the emitter's output for your specific parts before ordering in quantity, and
@@ -157,19 +149,15 @@ ground/cathode side):
 Confirm the anode/cathode and collector/emitter leads on your specific part's
 datasheet before soldering.
 
-### 3.3 Mounting the optoelectronics: on‑board vs. remote
+### 3.3 Mounting the optoelectronics (remote)
 
-Each emitter and detector lands on a **1×02, 2.54 mm through‑hole footprint**.
-You have two options:
+Each emitter and detector lands on a **1×02, 2.54 mm through‑hole footprint**. The
+optoelectronics are meant to be mounted **remotely**, not on the board: fit 2‑pin
+headers in these positions and connect the actual OP140 / OP550 devices on flying
+leads / a small harness. This lets the emitters and detectors be positioned on a
+fixture (e.g. aimed across a gap or at a target) rather than fixed to the PCB.
 
-* **Direct‑solder** the T‑1 device leads (2.54 mm lead spacing) straight into the
-  pads for a fixed geometry on the board.
-* **Fit 2‑pin headers** in these positions and connect the actual OP140 / OP550
-  devices on flying leads / a small harness. This is the intended path when the
-  emitters and detectors must be positioned on a fixture (e.g. aimed across a gap
-  or at a target) rather than on the PCB.
-
-Whichever you choose, maintain the `+ ⏚` polarity described in §3.2.
+Maintain the `+ ⏚` polarity described in §3.2 out at the remote device.
 
 ---
 
