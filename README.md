@@ -1,12 +1,12 @@
 # Strobed IR Emitter / Sensor Board
 
-**Designer:** Brad Buran · **Rev:** 2026‑02‑17 · **Tool:** KiCad 8
-
 A small four‑channel infrared emitter/detector board. Four IR LEDs (OP140) are
 driven as a single strobed array by an external control signal; four
 phototransistors (OP550) act as independent detectors, each presenting an analog
 output to a downstream acquisition system. The board is all through‑hole and is
 intended to be hand‑soldered.
+
+![Board overview](IR%20sensor%20strobe.png)
 
 ---
 
