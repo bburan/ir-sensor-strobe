@@ -1,0 +1,16 @@
+# KiCad auto-generated / cache
+fp-info-cache
+*-backups/
+*.kicad_prl
+_autosave-*
+*.bak
+*.kicad_pcb-bak
+*.kicad_sch-bak
+
+# Fabrication / export outputs
+/gerbers/
+*.zip
+
+# KiCad editor lock files
+*.lck
+~*.lck
