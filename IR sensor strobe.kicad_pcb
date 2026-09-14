@@ -105,7 +105,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R10"
-			(at 2.286 -0.508 360)
+			(at 2.286 -0.508 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "c228dd44-6168-41f8-94a4-85c329405538")
@@ -117,7 +117,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 5.588 0.508 360)
+			(at 5.588 0.508 0)
 			(layer "F.SilkS")
 			(uuid "a9e0e059-22f1-4042-88bb-1e19c80bf98f")
 			(effects
@@ -332,7 +332,7 @@
 			(uuid "26fc88aa-206f-4aef-b1ee-5d0c917e1a06")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.81 0 360)
+			(at 3.81 0 0)
 			(layer "F.Fab")
 			(uuid "355433f9-b12b-43e7-84db-6cb7d5e2914e")
 			(effects
@@ -875,7 +875,7 @@
 			(uuid "c62eb80a-9543-4cb9-8182-11584476b6ad")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 1.27 360)
+			(at 0 1.27 0)
 			(layer "F.Fab")
 			(uuid "e3224c96-7f3c-4083-ba83-c0047457e19f")
 			(effects
@@ -1769,7 +1769,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm  diameter 5mm width 2.5mm Capacitor")
 		(property "Reference" "C3"
-			(at 1.25 -2.5 360)
+			(at 1.25 -2.5 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "875f911b-f853-4a01-a696-69ab58acbb88")
@@ -1781,7 +1781,7 @@
 			)
 		)
 		(property "Value" "0.1 uF"
-			(at -4.054 0.01 360)
+			(at -4.054 0.01 0)
 			(layer "F.SilkS")
 			(uuid "8dd73e7f-198b-4287-8773-01ba93caaf80")
 			(effects
@@ -1956,7 +1956,7 @@
 			(uuid "9167e50d-2a4b-4ced-8ab9-787f54b7dacd")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 1.25 0 360)
+			(at 1.25 0 0)
 			(layer "F.Fab")
 			(uuid "870dbc88-10c0-4636-8edb-c42beb0ba3ae")
 			(effects
@@ -2499,7 +2499,7 @@
 			(uuid "75e4c528-83cc-4acb-bbec-2e2a9faaf18f")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.81 3.81 360)
+			(at 3.81 3.81 0)
 			(layer "F.Fab")
 			(uuid "787567c4-ecd1-45d9-b7f7-31b17b742314")
 			(effects
@@ -2896,7 +2896,7 @@
 		(descr "Through hole straight pin header, 1x05, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x05 2.54mm single row")
 		(property "Reference" "J3"
-			(at 0 -2.33 360)
+			(at 0 -2.33 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "31bc0cfb-b6ba-4c98-ba64-1537b64f2859")
@@ -3501,7 +3501,7 @@
 			)
 		)
 		(property "Value" "2N4401"
-			(at 1.778 -3.556 360)
+			(at 1.778 -3.556 0)
 			(layer "F.SilkS")
 			(uuid "91d175cc-512c-43f7-82fa-13b061627b39")
 			(effects
@@ -3720,7 +3720,7 @@
 			(uuid "d6efc192-2472-4692-b14b-27b705bfe402")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 2.54 0 360)
+			(at 2.54 0 0)
 			(layer "F.Fab")
 			(uuid "24458d3a-ebad-4ab9-98c4-d49751b85d0a")
 			(effects
@@ -4349,7 +4349,7 @@
 		(descr "C, Disc series, Radial, pin pitch=2.50mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
 		(tags "C Disc series Radial pin pitch 2.50mm  diameter 5mm width 2.5mm Capacitor")
 		(property "Reference" "C2"
-			(at 1.25 -2.5 360)
+			(at 1.25 -2.5 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "4572a4e6-6c37-4018-bbd6-d91a2fb1ecc3")
@@ -4862,7 +4862,7 @@
 		(descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=7.62mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
 		(tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 7.62mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
 		(property "Reference" "R1"
-			(at 5.842 0.508 360)
+			(at 5.842 0.508 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "51ecb479-46b2-4aa2-8b74-b5222f00143a")
@@ -4874,7 +4874,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 1.778 -0.508 360)
+			(at 1.778 -0.508 0)
 			(layer "F.SilkS")
 			(uuid "f9b2748b-8c7d-4c87-84b1-8c1432db442b")
 			(effects
@@ -5089,7 +5089,7 @@
 			(uuid "37ffac1e-c68b-4318-96f2-c61e346c04a2")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3.81 0 360)
+			(at 3.81 0 0)
 			(layer "F.Fab")
 			(uuid "111e3b6e-3209-4ba9-bf9c-3fe219afadbd")
 			(effects
@@ -5441,7 +5441,7 @@
 			)
 		)
 		(property "Value" "0.1 uF"
-			(at 1.25 2.276 360)
+			(at 1.25 2.276 0)
 			(layer "F.SilkS")
 			(uuid "66416387-4042-45a6-bbb6-3485587d4138")
 			(effects
@@ -5616,7 +5616,7 @@
 			(uuid "332ca541-28ac-491b-a168-907b08ec6c75")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 1.25 0 360)
+			(at 1.25 0 0)
 			(layer "F.Fab")
 			(uuid "1f2108ca-18e4-4394-9db5-419ab145219d")
 			(effects
@@ -8089,7 +8089,7 @@
 			(uuid "b4748039-d3bf-40b1-bf3f-61544bc0abfd")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 1.25 0 360)
+			(at 1.25 0 0)
 			(layer "F.Fab")
 			(uuid "94be3ad7-9a57-48fe-8258-b1beb9f71119")
 			(effects
@@ -8441,7 +8441,7 @@
 			)
 		)
 		(property "Value" "0.01 uF"
-			(at 1.28 -2.276 360)
+			(at 1.28 -2.276 0)
 			(layer "F.SilkS")
 			(uuid "1b2165b8-1061-49e4-ba3b-59b93a827884")
 			(effects
@@ -8616,7 +8616,7 @@
 			(uuid "b6e154e2-72ce-4960-a71c-b4b1fbd06528")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 1.25 0 360)
+			(at 1.25 0 0)
 			(layer "F.Fab")
 			(uuid "8283d7ad-7bed-456a-bee6-5cdccdad2c89")
 			(effects
