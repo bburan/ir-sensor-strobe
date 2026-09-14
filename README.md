@@ -22,8 +22,11 @@ The board contains two functional blocks that share a common +5 V / GND rail.
        ├─[68Ω R4]─▷|─ D3 ─┤   common cathode
        └─[68Ω R5]─▷|─ D4 ─┴────────────┐
                                         │ (collector)
-   CTL ──[1kΩ R1]── B  Q1 (NPN, TO‑92)  ◄
-                       E ── GND
+   CTL ──┬─[1kΩ R1]── B  Q1 (NPN, TO‑92)  ◄
+         │                E ── GND
+       [10kΩ R10]
+         │
+        GND
 ```
 
 All four IR emitters (D1–D4, OP140) sit between the +5 V rail and a common node,
@@ -41,6 +44,10 @@ is asserted high, Q1 saturates and all four LEDs illuminate together; when CTL i
 low the array is dark. This lets a host pulse ("strobe") the emitters
 synchronously — typically to reject ambient light and/or reduce average power by
 sampling the detectors only while the emitters are on.
+
+The 10 kΩ resistor **R10** pulls the CTL input to ground so the array stays dark
+whenever CTL is undriven or J1 is unplugged; it draws negligible current when the
+host drives CTL high and does not appreciably reduce Q1's base drive.
 
 Peak collector current in Q1 is the sum of the four branches (**≈ 200 mA**), so
 Q1 must be rated accordingly (see BOM notes).
@@ -68,15 +75,16 @@ independent; only the emitter array is strobed in common.
 
 ### 1.3 Notes and caveats
 
-* **No supply bypassing on‑board.** There is no decoupling capacitor in the
-  design. Because the emitter array switches ~200 mA, add a bulk + ceramic
-  bypass (e.g. 10 µF + 0.1 µF) at the +5 V/GND entry (J4) or immediately
-  upstream to control switching transients.
+* **Supply bypassing is on‑board.** A bulk + ceramic pair (**C1 = 10 µF**,
+  **C2 = 0.1 µF**) sits across the +5 V/GND entry at J4 to absorb the ~200 mA
+  switching transient of the emitter array. No external decoupling is required,
+  though additional bulk upstream never hurts on a long supply lead.
+* **CTL has an on‑board pulldown.** The 10 kΩ resistor **R10** holds CTL low when
+  it is undriven or unplugged, so the array defaults to dark. Any 3.3–5 V logic
+  high will still switch Q1.
 * **No reverse‑polarity or over‑current protection.** Observe supply polarity at
-  J4.
-* **CTL logic level.** Any 3.3–5 V logic high will switch Q1. There is no pulldown
-  on CTL; drive it actively (or add an external pulldown) so the array is not
-  left floating.
+  J4 — note that C1 is polarized and a reversed supply will stress it along with
+  Q1 and the phototransistors.
 
 ---
 
@@ -84,28 +92,27 @@ independent; only the emitter array is strobed in common.
 
 Quantities are per board. All parts are through‑hole.
 
-| Ref(s)          | Qty | Value / Part        | Package / Footprint                              | Notes |
-|-----------------|-----|---------------------|--------------------------------------------------|-------|
-| R1              | 1   | 1 kΩ                | Axial, ¼ W, 12.7 mm (0.5") pitch (DIN0411)       | Q1 base resistor |
-| R2, R3, R4, R5  | 4   | 68 Ω                | Axial, ¼ W, 12.7 mm pitch                        | LED current limit (~50 mA each) |
-| R6, R7, R8, R9  | 4   | 10 kΩ               | Axial, ¼ W, 12.7 mm pitch                        | Phototransistor collector load |
-| D1, D2, D3, D4  | 4   | OP140 IR LED        | 2‑lead, 2.54 mm lead pitch (T‑1 style)           | IR emitter; see §3.3 |
-| Q2, Q3, Q4, Q5  | 4   | OP550 phototransistor | 2‑lead, 2.54 mm lead pitch (T‑1 style)         | IR detector; see §3.3 |
-| Q1              | 1   | NPN transistor      | TO‑92 (inline)                                   | ≥300 mA I_C, e.g. 2N2222A / PN2222A / 2N4401 |
-| J1              | 1   | 1‑pin header        | 2.54 mm PinHeader 1×01                           | **CTL** (strobe control input) |
-| J2              | 1   | 4‑pin header        | 2.54 mm PinHeader 1×04                           | **Vout** (4 detector outputs) |
-| J3              | 1   | 5‑pin header        | 2.54 mm PinHeader 1×05                           | Ground bus (all 5 pins = GND) |
-| J4              | 1   | 2‑pin header        | 2.54 mm PinHeader 1×02                           | Power in: pin 1 = +5 V, pin 2 = GND |
-| PCB             | 1   | —                   | See §4                                           | — |
+| Ref(s)          | Qty | Value / Part          | Package / Footprint                              | Notes |
+|-----------------|-----|-----------------------|--------------------------------------------------|-------|
+| R1              | 1   | 1 kΩ                  | Axial, ¼ W, 12.7 mm (0.5") pitch (DIN0411)       | Q1 base resistor |
+| R2, R3, R4, R5  | 4   | 68 Ω                  | Axial, ¼ W, 12.7 mm pitch                        | LED current limit (~50 mA each) |
+| R6, R7, R8, R9  | 4   | 10 kΩ                 | Axial, ¼ W, 12.7 mm pitch                        | Phototransistor collector load |
+| R10             | 1   | 10 kΩ                 | Axial, ¼ W, 12.7 mm pitch                        | CTL pulldown |
+| C1              | 1   | 10 µF                 | Radial electrolytic, 2.5 mm pitch (polarized)    | Bulk supply bypass at J4; observe polarity |
+| C2              | 1   | 0.1 µF                | Ceramic disc, 5.0 mm pitch                       | HF supply bypass at J4 |
+| D1, D2, D3, D4  | 4   | OP140 emitter         | 2.54 mm PinHeader 1x02                           | Connects to socket for emitter |
+| Q2, Q3, Q4, Q5  | 4   | OP550 phototransistor | 2.54 mm PinHeader 1x02                           | Connects to socket for phototransistor |
+| Q1              | 1   | NPN transistor        | TO‑92 (inline)                                   | ≥300 mA I_C, e.g. 2N2222A / PN2222A / 2N4401 |
+| J1              | 1   | 1‑pin header          | 2.54 mm PinHeader 1×01                           | Connects to socket for control input |
+| J2              | 1   | 4‑pin header          | 2.54 mm PinHeader 1×04                           | Connects to sockets for detector outputs |
+| J3              | 1   | 5‑pin header          | 2.54 mm PinHeader 1×05                           | Connects to sockets for control/detector output |
+| J4              | 1   | 2‑pin header          | 2.54 mm PinHeader 1×02                           | Power in: pin 1 = +5 V, pin 2 = GND |
 
 **Emitter/detector wavelength.** OP140 (emitter) and OP550 (detector) are the
 parts called out in the design. Confirm the detector's spectral response overlaps
 the emitter's output for your specific parts before ordering in quantity, and
 consult the current datasheets for lead configuration.
 
-**Connectors.** J1–J4 are shown as pin headers; substitute the mating style your
-harness uses (straight/right‑angle headers, or screw terminals on the same
-2.54 mm pitch) as convenient.
 
 ---
 
@@ -118,17 +125,20 @@ requires reflow.
 
 Populate lowest‑profile parts first so the board sits flat while you work:
 
-1. **Resistors R1–R9** (axial). Bend leads to the 12.7 mm pitch, seat flat,
+1. **Resistors R1–R10** (axial). Bend leads to the 12.7 mm pitch, seat flat,
    solder, and trim. Resistors are non‑polar. Double‑check value groups:
    * R1 = 1 kΩ (base)
    * R2, R3, R4, R5 = 68 Ω (LED series)
    * R6, R7, R8, R9 = 10 kΩ (detector load)
-2. **Transistor Q1** (TO‑92). Observe **C–B–E** orientation per §2. Seat with a
-   few mm of lead so the case is not stressed; solder and trim.
+   * R10 = 10 kΩ (CTL pulldown)
+2. **Ceramic cap C2** (0.1 µF, non‑polar) and **transistor Q1** (TO‑92). Seat Q1
+   with a few mm of lead so the case is not stressed; solder and trim.
 3. **Headers J1, J2, J3, J4**. Solder one pin, reflow while pressing the header
    flush and square, then solder the rest. Pin 1 of each connector is the
    **square/rectangular pad** on the board.
-4. **Emitters D1–D4 and detectors Q2–Q5** — see §3.2 / §3.3 for orientation.
+4. **Electrolytic cap C1** (10 µF, **polarized**). Match the `+` lead to the `+`
+   pad / longer‑lead marking; the silkscreen band indicates the negative side.
+5. **Emitters D1–D4 and detectors Q2–Q5** — see §3.2 / §3.3 for orientation.
 
 Clean flux as appropriate and inspect for bridges, especially at the connector
 rows.
@@ -193,7 +203,8 @@ There are no controlled‑impedance, high‑voltage, or thermal requirements.
 
 ### Typical connection
 
-1. Supply **+5 V / GND** to **J4** (add local bypassing — see §1.3).
+1. Supply **+5 V / GND** to **J4** (on‑board bypass caps C1/C2 handle local
+   decoupling — see §1.3).
 2. Drive **J1 (CTL)** from a host GPIO/timer. Assert high while sampling to strobe
    the emitters; hold low to save power / go dark.
 3. Read the four **J2 (Vout)** channels on the host, referenced to a **J3** ground.
@@ -202,8 +213,9 @@ There are no controlled‑impedance, high‑voltage, or thermal requirements.
 
 ## 6. Bring‑up / Test
 
-1. **Unpowered:** continuity‑check +5 V to GND (should be open — no bypass cap on
-   board). Verify J4 polarity.
+1. **Unpowered:** verify J4 polarity. A continuity/resistance check from +5 V to
+   GND will briefly show the bypass caps (C1/C2) charging before settling to a
+   high resistance — it should **not** read a hard short. Confirm C1's polarity.
 2. **Power, CTL low:** apply +5 V. Each Vout on J2 should read ≈ +5 V (detectors
    dark, pulled up through 10 kΩ). Quiescent current is small (just the detector
    loads).
